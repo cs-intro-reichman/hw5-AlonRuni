@@ -11,11 +11,12 @@ public class MyString {
     //    System.out.println(spacedString("12"));
     //    System.out.println(randomStringOfLetters(30));
     //    System.out.println(spacedString("12"));
-        System.out.println("\nTesting remove:");
-        System.out.println("committee - meet -> " + MyString.remove("committee", "meet") + " (expected: comit)");
-        System.out.println("abc - abc -> " + MyString.remove("abc", "abc") + " (expected: )");
-        System.out.println("abc - b -> " + MyString.remove("abc", "b") + " (expected: ac)");
-        System.out.println("hello - empty string -> " + MyString.remove("hello", "") + " (expected: hello)");
+        System.out.println("\nTesting subsetOf:");
+        System.out.println("sap in space -> " + MyString.subsetOf("sap", "space") + " (expected: true)");
+        System.out.println("spa in space -> " + MyString.subsetOf("spa", "space") + " (expected: true)");
+        System.out.println("pass in space -> " + MyString.subsetOf("pass", "space") + " (expected: false)");
+        System.out.println("c in space -> " + MyString.subsetOf("c", "space") + " (expected: true)");
+        System.out.println("empty string in anything -> " + MyString.subsetOf("", "anything") + " (expected: true)");
     }
 
     /**
@@ -48,12 +49,15 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-        for (int i = 0; i <= str1.length() - str2.length(); i++) {
-            if (str1.substring(i, i + str2.length()).equals(str2) ) {
-                return true;
-            }
+        if (str1 == "") {
+            return true;
         }
-        return false;
+        for (int i = 0; i < str1.length(); i++) {
+            if (countChar(str1, str1.charAt(i)) != countChar(str2, str1.charAt(i))) {
+                return false;
+            }
+        } 
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -66,7 +70,7 @@ public class MyString {
      */
     public static String spacedString(String str) {
         String spacedStr = "";
-        if (str.length() > 1) {
+        if (str.length() < 1) {
             return "";
         }
         for (int i = 0; i < str.length(); i++) {
