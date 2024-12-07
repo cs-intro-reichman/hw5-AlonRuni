@@ -3,20 +3,14 @@
  */
 public class MyString {
     public static void main(String args[]) {
-    //    String hello = "hello";
-    //    System.out.println(countChar(hello, 'h'));
-    //    System.out.println(countChar(hello, 'l'));
-    //    System.out.println(countChar(hello, 'z'));
-    //    System.out.println(spacedString(hello));
-    //    System.out.println(spacedString("12"));
-    //    System.out.println(randomStringOfLetters(30));
-    //    System.out.println(spacedString("12"));
-        System.out.println("\nTesting subsetOf:");
-        System.out.println("sap in space -> " + MyString.subsetOf("sap", "space") + " (expected: true)");
-        System.out.println("spa in space -> " + MyString.subsetOf("spa", "space") + " (expected: true)");
-        System.out.println("pass in space -> " + MyString.subsetOf("pass", "space") + " (expected: false)");
-        System.out.println("c in space -> " + MyString.subsetOf("c", "space") + " (expected: true)");
-        System.out.println("empty string in anything -> " + MyString.subsetOf("", "anything") + " (expected: true)");
+        String hello = "hello";
+        System.out.println(countChar(hello, 'h'));
+        System.out.println(countChar(hello, 'l'));
+        System.out.println(countChar(hello, 'z'));
+        System.out.println(spacedString(hello));
+        System.out.println(spacedString("12"));
+        System.out.println(randomStringOfLetters(30));
+        System.out.println(spacedString("12"));
     }
 
     /**
@@ -53,7 +47,7 @@ public class MyString {
             return true;
         }
         for (int i = 0; i < str1.length(); i++) {
-            if (countChar(str1, str1.charAt(i)) != countChar(str2, str1.charAt(i))) {
+            if (countChar(str1, str1.charAt(i)) > countChar(str2, str1.charAt(i))) {
                 return false;
             }
         } 

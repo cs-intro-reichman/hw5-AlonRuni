@@ -1,3 +1,7 @@
+
+
+
+
 /*
  * RUNI version of the Scrabble game.
  */
@@ -48,7 +52,11 @@ public class Scrabble {
 
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
-		//// Replace the following statement with your code
+		for (String elem : DICTIONARY) {
+			if (word.equals(elem)) {
+				return true;
+			}
+		}
 		return false;
 	}
 	
@@ -57,7 +65,16 @@ public class Scrabble {
 	// If the word includes the sequence "runi", adds 1000 points to the game.
 	public static int wordScore(String word) {
 		//// Replace the following statement with your code
-		return 0;
+		String letters = "abcdefghijklmnopqrstuvwxyz";
+		int sum = 0;
+		for (int i = 0; i < word.length(); i++) {
+			sum = sum + SCRABBLE_LETTER_VALUES[letters.indexOf(word.charAt(i))];
+		}
+		sum *= word.length();
+		if (MyString.subsetOf("runi", word)) {
+			sum += 1000;
+		}
+		return sum;
 	}
 
 	// Creates a random hand of length (HAND_SIZE - 2) and then inserts
@@ -119,7 +136,7 @@ public class Scrabble {
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
 		////testBuildingTheDictionary();  
-		////testScrabbleScore();    
+		testScrabbleScore();    
 		////testCreateHands();  
 		////testPlayHands();
 		////playGame();
@@ -139,6 +156,7 @@ public class Scrabble {
 		System.out.println(wordScore("babe"));
 		System.out.println(wordScore("friendship"));
 		System.out.println(wordScore("running"));
+		System.out.println(MyString.subsetOf("runi", "running"));
 	}
 	
 	public static void testCreateHands() {
