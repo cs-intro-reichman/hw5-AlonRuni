@@ -73,6 +73,9 @@ public class Scrabble {
 		if (MyString.subsetOf("runi", word)) {
 			sum += 1000;
 		}
+		if (word.length() == 10) {
+			sum += 50;
+		}
 		return sum;
 	}
 
